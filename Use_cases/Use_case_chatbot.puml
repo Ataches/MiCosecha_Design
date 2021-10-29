@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+skinparam packageStyle rect
+
+actor Chatbot as chat
+actor User as user
+
+package Consult_historic_data{
+    (Consult precipitation) as prec
+    (Consult relative humidity) as rhum
+    (Consult sun bright) as sbright
+    (Consult maximum\nair temperature) as max_temp
+    (Consult minimum\nair temperature) as (min_temp)
+
+    user -- prec
+    user - rhum
+    user - sbright
+    user - max_temp
+    user - (min_temp)
+
+    prec -- chat
+    rhum -- chat
+    sbright -- chat
+    max_temp -- chat
+    min_temp -- chat
+}
+
+
+@enduml

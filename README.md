@@ -1,2 +1,17 @@
 # MiCosecha_Design
-Requirements Analysis - Design,Class diagrams, Components diagrams, Deployment diagrams, BPMN diagrams, Relational model
+
+## Autor
+
+    Juan Sebastián Sánchez Mancilla
+
+## Contenido
+
+Análisis de requerimientos 
+
+Diseño
+
+- Class diagrams
+- Components diagrams
+- Deployment diagrams
+- BPMN diagrams
+- Relational model

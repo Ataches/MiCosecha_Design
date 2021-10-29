@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+
+
+package Register_and_login{
+    (Register new user) as signup
+    (Login user) as login
+}
+
+User -> (signup)
+User -> (login)
+
+
+
+note "User can only register\nwith email" as N1
+(User) -- N1
+N1 -- (signup)
+
+@enduml

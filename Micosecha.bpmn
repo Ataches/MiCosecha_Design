@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_1jy36su" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="8.8.0">
+  <bpmn:collaboration id="Collaboration_0u95gko">
+    <bpmn:participant id="Participant_14w33e8" name="MiCosecha" processRef="Process_11nb4vq" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_11nb4vq">
+    <bpmn:laneSet id="LaneSet_068xf5j">
+      <bpmn:lane id="Lane_0w6fxe4" name="Usuario" />
+      <bpmn:lane id="Lane_159scm7" name="Chatbot" />
+      <bpmn:lane id="Lane_0ffl4l3" name="Sistema" />
+    </bpmn:laneSet>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0u95gko">
+      <bpmndi:BPMNShape id="Participant_14w33e8_di" bpmnElement="Participant_14w33e8" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="600" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0w6fxe4_di" bpmnElement="Lane_0w6fxe4" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="570" height="83" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_159scm7_di" bpmnElement="Lane_159scm7" isHorizontal="true">
+        <dc:Bounds x="190" y="163" width="570" height="83" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0ffl4l3_di" bpmnElement="Lane_0ffl4l3" isHorizontal="true">
+        <dc:Bounds x="190" y="246" width="570" height="84" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
