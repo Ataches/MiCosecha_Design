@@ -6,25 +6,28 @@ skinparam packageStyle rect
 actor Chatbot as chat
 actor User as user
 
-package Consult_historic_data{
-    (Consult precipitation) as prec
-    (Consult relative humidity) as rhum
-    (Consult sun bright) as sbright
-    (Consult maximum\nair temperature) as max_temp
-    (Consult minimum\nair temperature) as (min_temp)
+package Chatbot{
+    (Graph precipitation) as prec
+    (Graph relative humidity) as rhum
+    (Graph sun bright) as sbright
+    (Graph maximum\nor minimum\nair temperature) as (temp)
 
-    user -- prec
-    user - rhum
-    user - sbright
-    user - max_temp
-    user - (min_temp)
+    (Get historic data) as historic
 
-    prec -- chat
-    rhum -- chat
-    sbright -- chat
-    max_temp -- chat
-    min_temp -- chat
+    user -- historic
+
+    historic <.. prec :extends
+    historic <.. rhum :extends
+    historic <.. sbright :extends
+    historic <.. temp :extends
 }
 
+package System{
+    (Graph data) as graph
+    (Obtain data) as obtain
 
+    graph -- obtain
+}
+
+chat --> graph
 @enduml

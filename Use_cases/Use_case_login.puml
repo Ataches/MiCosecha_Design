@@ -3,15 +3,23 @@
 left to right direction
 
 
-package Register_and_login{
+package System{
     (Register new user) as signup
     (Login user) as login
+
+    (Fetch data) as fetch
+    (Register data) as register
+    (Get data) as consult
 }
 
-User -> (signup)
 User -> (login)
+User -> (signup)
 
+(login) -- fetch
+(signup) -- fetch
 
+fetch -- register
+fetch -- consult
 
 note "User can only register\nwith email" as N1
 (User) -- N1

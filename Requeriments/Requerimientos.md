@@ -18,12 +18,15 @@ Aquí solo se incluye una lista numerada de las principales funcionalidades, la 
 
 | Funcionalidad                                          | Requerimiento funcional                                  |
 |--------------------------------------------------------|----------------------------------------------------------|
-| Consultar datos historicos                             | Obtener datos                                            |
-|                                                        | Graficar datos                                           |
-| Generar estimación                                     | Entrenar red neuronal                                            |
-| Consultar temperatura minima                           | Obtener datos                                           |
-| Consultar brillo del sol                               | Registrar ingreso y salida de mercancía                  |
-| Consultar humedad relativa                             | Elegir la forma de pago (Efectivo o Tarjeta de crédito)  |
+| Consultar datos historicos                             | Graficar temperatura maxima o minima                     |
+|                                                        | Graficar brillo del sol                                  |
+|                                                        | Graficar humedad relativa                                |
+|                                                        | Graficar precipitación                                   |
+| Graficar datos                                         | Obtener datos                                            |
+| Registrar usuario                                      | Obtener datos                                            |
+|                                                        | Registrar datos                                          |
+| Iniciar sesión usuario                                 | Obtener datos                                            |
+|                                                        | Consultar datos                                          |
 
 ## Clases y características de usuarios
 

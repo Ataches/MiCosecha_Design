@@ -5,19 +5,20 @@ skinparam packageStyle rect
 
 actor User as user
 
-package Consult_historic_data{
-    (Consult precipitation) as prec
-    (Consult relative humidity) as rhum
-    (Consult sun bright) as sbright
-    (Consult maximum\nair temperature) as max_temp
-    (Consult minimum\nair temperature) as (min_temp)
+package System{
+    (Graph precipitation) as prec
+    (Graph relative humidity) as rhum
+    (Graph sun bright) as sbright
+    (Graph maximum\nor minimum\nair temperature) as (temp)
 
-    user -- prec
-    user - rhum
-    user - sbright
-    user - max_temp
-    user - (min_temp)
+    (Get historic data) as historic
+
+    user -- historic
+
+    historic <.. prec :extends
+    historic <.. rhum :extends
+    historic <.. sbright :extends
+    historic <.. temp :extends
 }
-
 
 @enduml
