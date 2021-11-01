@@ -24,9 +24,11 @@ package Chatbot{
 
 package System{
     (Graph data) as graph
-    (Obtain data) as obtain
+    (Show data) as show_data
+    (Fetch data) as fetch
 
-    graph -- obtain
+    show_data <. graph :includes
+    graph -- fetch
 }
 
 chat --> graph
