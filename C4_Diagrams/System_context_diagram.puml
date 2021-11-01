@@ -1,0 +1,21 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!$COLOR_Data = "#FFFFFF"
+!$FONT_COLOR = "#000000"
+
+title System Context Diagram for MiCosecha
+UpdateElementStyle("system", $bgColor=$COLOR_Data, $fontColor=$FONT_COLOR, $borderColor=$FONT_COLOR)
+Person(user, "User", "Who needs to check\nplanting crops factors")
+
+Container(mobile_app, "System to identify agricultural factors", "MiCosecha","Allow users to view data related to factors that contribute to the planting of crops")
+
+System(data, "Data", "Used by\n the system"){
+    System_Ext(fedearroz, "Federación nacional de arroceros", "Colombia")
+    System_Ext(ideam, "IDEAM", "Harvard Dataverse")
+}
+
+Rel(user, mobile_app, "Uses")
+Rel(mobile_app, fedearroz, "Uses")
+Rel(mobile_app, ideam, "Uses")
+
+@enduml
