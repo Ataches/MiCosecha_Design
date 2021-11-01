@@ -1,7 +1,35 @@
 # Documento de requerimientos de software
 ## Mi cosecha 
 
-
+- [Documento de requerimientos de software](#documento-de-requerimientos-de-software)
+  * [Mi cosecha](#mi-cosecha)
+  * [Propósito](#prop-sito)
+  * [Alcance del software](#alcance-del-software)
+  * [Funcionalidades del producto](#funcionalidades-del-producto)
+  * [Clases y características de usuarios](#clases-y-caracter-sticas-de-usuarios)
+  * [Requerimientos funcionales](#requerimientos-funcionales)
+    + [Consultar datos históricos](#consultar-datos-hist-ricos)
+      - [Descripción](#descripci-n)
+        * [Acciones iniciadoras y comportamiento esperado](#acciones-iniciadoras-y-comportamiento-esperado)
+        * [Requerimientos funcionales](#requerimientos-funcionales-1)
+    + [Graficar datos](#graficar-datos)
+      - [Descripción](#descripci-n-1)
+      - [Acciones y comportamiento esperado](#acciones-y-comportamiento-esperado)
+      - [Requerimientos funcionales](#requerimientos-funcionales-2)
+    + [Registrar usuario](#registrar-usuario)
+      - [Descripción](#descripci-n-2)
+      - [Acciones iniciadoras y comportamiento esperado](#acciones-iniciadoras-y-comportamiento-esperado-1)
+      - [Requerimientos funcionales](#requerimientos-funcionales-3)
+    + [Iniciar sesión del usuario](#iniciar-sesi-n-del-usuario)
+      - [Descripción](#descripci-n-3)
+      - [Acciones iniciadoras y comportamiento esperado](#acciones-iniciadoras-y-comportamiento-esperado-2)
+      - [Requerimientos funcionales](#requerimientos-funcionales-4)
+  * [Requerimientos no funcionales](#requerimientos-no-funcionales)
+    + [Tiempo de espera](#tiempo-de-espera)
+    + [Persistencia](#persistencia)
+    + [Servicios web](#servicios-web)
+    + [Fiabilidad](#fiabilidad)
+    
 ## Propósito
 Con el fin de aportar a la mejora de la administración de los productos agrícolas, se busca desarrollar un software para la administración (recomendación a la hora de siembra y manutención) de cultivos de arroz
 en el departamento del Tolima.
@@ -23,7 +51,7 @@ Se incluye una lista de las principales funcionalidades, la información detalla
 | Graficar datos                                         | Obtener datos                                            |
 | Registrar usuario                                      | Obtener datos                                            |
 |                                                        | Registrar datos                                          |
-| Iniciar sesión del usuario                                 | Obtener datos                                            |
+| Iniciar sesión del usuario                             | Obtener datos                                            |
 |                                                        | Consultar datos                                          |
 
 ## Clases y características de usuarios
@@ -152,27 +180,21 @@ La aplicación debe tener un tiempo de respuesta como máximo de 5 segundos en t
 __REQNF-2__:
 ### Persistencia
 
-Toda la información relacionada al sistema, que está involucrada en las operaciones de los diferentes componentes, debe ser manejada y almacenada mediante un gestor de base de datos relacional.
+La información relacionada con el sistema debe ser manejada y almacenada mediante un gestor de base de datos relacional.
 
 - Criterios de aceptación:
     - La información debe ser almacenada en distintas tablas que almacenen los datos.
     - La información debe ser manipulable a través de las diferentes operaciones del gestor de base de datos.
 
-## Justificación  arquitectural
+__REQNF-3__:
+### Servicios web
 
-### Microservicios
+La comunicación entre los componentes del sistema debe ser desarrollada con el uso de servicios web 
 
-Funcionalidades independientes descritas por sus requerimientos funcionales permiten la construcción de los diferentes módulos/componentes (microservicios) que hacen parte de la arquitectura.
+- Criterios de aceptación:
+  - Hay comunicación entre componentes por medio de formatos de texto para el intercambio de datos como JSON
 
-Dado al tamaño del aplicativo no se espera muchos micro servicios a futuro con lo cual será mantenible al momento de añadir nuevas funcionalidades.
+__REQNF-4__:
+### Fiabilidad
 
-### ¿Por qué los microservicios?
-
-- Independencia entre micro aplicaciones. Cada micro aplicación es una funcionalidad identificada en los requerimientos funcionales.
-- Fácil de despliegue entre micro servicios.
-- Capacidad de mantenimiento mejorada: cada servicio es relativamente pequeño y, por lo tanto, es más fácil de entender y cambiar.
-- Mejor capacidad de prueba: los servicios son más pequeños y más rápidos de probar
-- Mejor implementación: los servicios se pueden implementar de forma independiente de su estructura o lenguaje de programación.
-- Permite organizar el esfuerzo de desarrollo en torno a varios equipos autónomos.
-- Permite utilizar microservicios externos como lo son gestión de pagos (por ejemplo PSE, PayPal - pasarelas de pago) o gestión de usuarios (por ejemplo Firebase REST API, Google auth service).
-- Comunicación entre microservicios por medio de formatos XML o JSON.
+El manejo de los datos dentro de la aplicación debe estar sujeto a exactitud y fiabilidad de la información ingresada al sistema y la proporcionada al el sistema.
