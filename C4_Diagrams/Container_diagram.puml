@@ -20,7 +20,7 @@ Person(user, "User", "Who needs to check\nplanting crops factors")
 
 System_Boundary(mi_cosecha, "MiCosecha"){
     Container(mobile_app, "Android Application", "Kotlin","Allow users to view data related to factors that contribute to the planting of crops", $tags="android")
-    ContainerDb(django, "API", "Django", "Handles all business logic",  $tags="django")
+    Container(django, "API", "Django", "Handles all business logic",  $tags="django")
     ContainerDb(rel_db, "Relational Database", "MySQL", "Stores users and application data",  $tags="db")
 }
 
