@@ -17,12 +17,19 @@ AddContainerTag("django", $sprite="django")
 AddContainerTag("db", $sprite="database_server", $legendText="database container")
 
 
-Container(mobile_app, "Android Application", "Kotlin","Allow users to view data related to factors that contribute to the planting of crops", $tags="android")
+Container(mobile_app, "Android Application", "Kotlin","Allow users to view data related to the factors that contribute to the planting of crops", $tags="android")
 
 System_Boundary(mi_cosecha, "API Application"){
-    Container(sign_in, "Sign in controller", "Allow users login with their email",  $tags="django")
-    Container(register, "Register controller", "Allow users a registration in platform",  $tags="django")
-    Container(graph_data, "Graph data controller", "Shows to a user graphs related with planting factors",  $tags="django")
+    System_Boundary(Authentication_service, "Authentication service"){
+        Container(sign_in, "Sign in controller", "Allow users login with their email",  $tags="django")
+        Container(register, "Register controller", "Allow users a registration in platform",  $tags="django")
+    }
+    System_Boundary(Graph_service, "Graph service"){
+        Container(graph_data, "Graph data controller", "Shows to a user graphs related with planting factors",  $tags="django")
+    }
+    System_Boundary(Chatbot_service, "Chatbot service"){
+        Container(chatbot, "Chatbot controller", "Chatbot used by the user to interact with the system",  $tags="django")
+    }
 }
 
 ContainerDb(rel_db, "Relational Database", "MySQL", "Stores users and application data",  $tags="db")
@@ -32,6 +39,8 @@ System_Ext(data, "Data", "IDEAM and FEDEARROZ")
 Rel(mobile_app, sign_in, "Uses", "GraphQL")
 Rel(mobile_app, register, "Uses", "GraphQL")
 Rel(mobile_app, graph_data, "Uses", "GraphQL")
+Rel(mobile_app, chatbot, "Uses", "GraphQL")
+Rel_L(chatbot, graph_data, "Uses", "GraphQL")
 Rel(graph_data, data, "Uses", "GraphQL")
 Rel(sign_in, rel_db, "Uses", "GraphQL")
 Rel(register, rel_db, "Uses", "GraphQL")

@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+node Android_application <<Kotlin>> {
+    namespace view.chatbot {
+        class ChatbotActivity  {
+        }
+    }
+}
+
+node Graph_service <<Django>> {
+    namespace data.graph {
+        class GraphController {
+        }
+    }
+}
+
+node Chatbot_service <<Django>> {
+    namespace data.chatbot {
+        class ChatbotModel {
+            graphData():GraphData data
+            communicate(message)
+            bagOfWords()
+            clean_up_sentence(sentence)
+            calculate_prediction(sentence, model)
+            get_response(intents)
+        }
+        class GraphData {
+            year: int
+            variable: String
+            graphType: String
+        }
+        class TrainBot {
+        }
+
+        ChatbotModel o-- GraphData
+        data.graph.GraphController --* ChatbotModel
+        ChatbotController *- ChatbotModel
+        view.chatbot.ChatbotActivity o-- ChatbotController
+        ChatbotModel *-- TrainBot
+    }
+}
+@enduml

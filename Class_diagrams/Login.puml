@@ -1,27 +1,60 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+node Android_application <<Kotlin>> {
+    namespace view.login {
+        class LoginActivity  {
+            onCreate()
+        }
+        class RegisterActivity  {
+            onCreate()
+        }
+    }
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+package MySQL <<Database>> {
+}
+
+node Authorization_service <<Django>> {
+    namespace data.user {
+        class UserController {
+        }
+        class UserManager {
+            loginUser(User user)
+            registerUser(User user)
+            getCurrentUser(User user)
+            logoutUser(User user)
+        }
+        class UserModel {
+        }
+        class User {
+            name: String
+            password: String
+        }
+        interface IUserDAO {
+            getUser(User user)
+            createUser(User user)
+            update(User user)
+            delete(User user)
+        }
+        class UserDAO {
+            getUser(User user)
+            createUser(User user)
+            update(User user)
+            delete(User user)
+        }
+
+        UserManager o-- User
+        IUserDAO  <|-- UserDAO :implements
+        UserDAO -- MySQL
+        view.login.LoginActivity o-- UserController
+        UserModel o- UserManager
+        UserModel -o UserController
+        UserController -o view.login.RegisterActivity
+        UserController o-- UserManager
+        UserManager -- IUserDAO
+    }
 }
 
 @enduml

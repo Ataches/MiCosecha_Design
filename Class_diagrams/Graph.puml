@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+node Android_application <<Kotlin>> {
+    namespace view.graph {
+        class GraphActivity  {
+        }
+    }
+}
+
+package IDEAM_Fedearroz <<Rectangle>> {
+}
+node Graph_service <<Django>> {
+    namespace data.graph {
+        class GraphModel {
+            graph(GraphData data)
+        }
+        class GraphController {
+        }
+        class GraphData {
+            year: int
+            variable: String
+            graphType: String
+        }
+        interface IDataReader {
+            getData(Data data)
+        }
+        class DataReader {
+            getData(): Data data
+        }
+
+        GraphModel o-- GraphData
+        IDataReader <|-- DataReader  :implements
+        DataReader -- IDEAM_Fedearroz
+        GraphController -o GraphModel
+        view.graph.GraphActivity o-- GraphController
+        GraphModel -- IDataReader
+    }
+}
+
+@enduml
