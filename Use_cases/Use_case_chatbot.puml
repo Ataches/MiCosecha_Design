@@ -6,23 +6,11 @@ skinparam packageStyle rect
 actor Chatbot as chat
 actor User as user
 
-package Chatbot{
-    (Graph precipitation) as prec
-    (Graph relative humidity) as rhum
-    (Graph sun bright) as sbright
-    (Graph maximum\nor minimum\nair temperature) as (temp)
-
-    (Get historic data) as historic
+package System{
+    (Communicate with bot) as historic
 
     user -- historic
 
-    historic <.. prec :extends
-    historic <.. rhum :extends
-    historic <.. sbright :extends
-    historic <.. temp :extends
-}
-
-package System{
     (Graph data) as graph
     (Show data) as show_data
     (Fetch data) as fetch
