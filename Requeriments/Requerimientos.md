@@ -31,8 +31,8 @@
     + [Fiabilidad](#fiabilidad)
     
 ## Propósito
-Con el fin de aportar a la mejora de la administración de los productos agrícolas, se busca desarrollar un software para la administración (recomendación a la hora de siembra y manutención) de cultivos de arroz
-en el departamento del Tolima.
+Con el fin de aportar a la mejora de la administración de los productos agrícolas, se busca desarrollar un software que
+contribuya en la gestión de cultivos de arroz en el departamento del Tolima.
 
 ## Alcance del software
 
