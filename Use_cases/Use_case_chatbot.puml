@@ -13,11 +13,11 @@ package System{
 
     (Graph data) as graph
     (Show data) as show_data
-    (Fetch data) as fetch
+    (Process graph data) as fetch
 
     show_data <. graph :includes
-    graph -- fetch
+    graph .> fetch :includes
 }
 
-chat --> graph
+chat -- graph
 @enduml

@@ -8,27 +8,24 @@
 !include <office/Concepts/service_application>
 !include <office/Concepts/firewall>
 !include DEVICONS/android.puml
-!include DEVICONS/django.puml
+!include DEVICONS/python.puml
 
 title Container Diagram for MiCosecha
 
 AddContainerTag("android", $sprite="android", $legendText="android container")
-AddContainerTag("django", $sprite="django", $legendText="django container")
-AddContainerTag("db", $sprite="database_server", $legendText="database container")
+AddContainerTag("python", $sprite="python", $legendText="python container")
 
 Person(user, "User", "Who needs to check\nplanting crops factors")
 
 System_Boundary(mi_cosecha, "MiCosecha"){
     Container(mobile_app, "Android Application", "Kotlin","Allow users to view data related to factors that contribute to the planting of crops", $tags="android")
-    Container(django, "API", "Django", "Handles all business logic",  $tags="django")
-    ContainerDb(rel_db, "Relational Database", "MySQL", "Stores users and application data",  $tags="db")
+    Container(flask_data, "Requests processor", "FLask", "Handles data processing logic", $tags="python")
 }
 
-System_Ext(datos_gov, "Data", "IDEAM and FEDEARROZ")
+System_Ext(datos_gov, "Data", "Instituto de Hidrología - CIAT Dataverse")
 
-Rel(user, mobile_app, "Uses")
-Rel(mobile_app, django, "Uses", "GraphQL")
-Rel(django, rel_db, "Uses", "GraphQL")
-Rel(django, datos_gov, "Uses", "GraphQL")
+Rel_R(user, mobile_app, "Uses")
+mobile_app <--> flask_data: Uses [HTTP]
+Rel_R(flask_data, datos_gov, "Uses")
 
 @enduml

@@ -1,42 +1,30 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-node Android_application <<Kotlin>> {
-    namespace view.chatbot {
-        class ChatbotActivity  {
+node AndroidApplication <<Kotlin>> {
+    namespace view {
+        class ChatbotFragment  {
         }
     }
 }
 
-node Graph_service <<Django>> {
-    namespace data.graph {
-        class GraphController {
-        }
-    }
-}
-
-node Chatbot_service <<Django>> {
-    namespace data.chatbot {
+node Chatbot <<Flask>> {
+    namespace python-chatbot.src {
         class ChatbotModel {
-            graphData():GraphData data
-            communicate(message)
-            bagOfWords()
-            clean_up_sentence(sentence)
-            calculate_prediction(sentence, model)
-            get_response(intents)
+            + clean_up_sentence(): List sentence_words
+            + prediction_calculation(message): List results
+            + bag_of_words(): Array bag
+            + get_response(sentence): String response
         }
-        class GraphData {
-            year: int
-            variable: String
-            graphType: String
+        class controller {
+            + get_response(): String message
         }
         class TrainBot {
+            + train_bot(): String status
         }
 
-        ChatbotModel o-- GraphData
-        data.graph.GraphController --* ChatbotModel
-        ChatbotController *- ChatbotModel
-        view.chatbot.ChatbotActivity o-- ChatbotController
+        controller *- ChatbotModel
+        view.ChatbotFragment o-- controller
         ChatbotModel *-- TrainBot
     }
 }

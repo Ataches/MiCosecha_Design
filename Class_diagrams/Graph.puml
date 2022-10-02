@@ -2,40 +2,49 @@
 'https://plantuml.com/class-diagram
 
 
-node Android_application <<Kotlin>> {
-    namespace view.graph {
-        class GraphActivity  {
+node AndroidApplication <<Kotlin>> {
+    namespace view {
+        class VarietyResumeFragment  {
+            + onCreateView(): View?
         }
     }
 }
 
-package IDEAM_Fedearroz <<Rectangle>> {
+package CIAT_Dataverse <<Rectangle>> {
 }
-node Graph_service <<Django>> {
-    namespace data.graph {
-        class GraphModel {
-            graph(GraphData data)
+node GraphData <<Flask>> {
+    namespace rice-graph.src {
+        class graph_processing {
+            + _ _init_ _ (): void
+            + predict_yield(DataFrame df_saldana_harvest): GraphData
+            + graph_data_by_variety(String variety): GraphData
         }
         class GraphController {
+            + graph_processing : GraphProcessing
+            + graph_data(): void
         }
         class GraphData {
-            year: int
-            variable: String
-            graphType: String
+            + line_set: dict
+            + min_temp: String
+            + max_temp: String
+            + rhum: String
+            + sbright: String
+            + prec: String
+            + prod: String
         }
         interface IDataReader {
-            getData(Data data)
+            get_data(): DataFrame data
         }
         class DataReader {
-            getData(): Data data
+            get_data(): DataFrame data
         }
 
-        GraphModel o-- GraphData
+        graph_processing o-- GraphData
         IDataReader <|-- DataReader  :implements
-        DataReader -- IDEAM_Fedearroz
-        GraphController -o GraphModel
-        view.graph.GraphActivity o-- GraphController
-        GraphModel -- IDataReader
+        DataReader -- CIAT_Dataverse
+        GraphController o- graph_processing
+        view.VarietyResumeFragment o-- GraphController
+        graph_processing -- IDataReader
     }
 }
 

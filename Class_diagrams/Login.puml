@@ -16,7 +16,7 @@ node Android_application <<Kotlin>> {
 package MySQL <<Database>> {
 }
 
-node Authorization_service <<Django>> {
+node Authorization_service <<Flask>> {
     namespace data.user {
         class UserController {
         }

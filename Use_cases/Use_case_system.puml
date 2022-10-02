@@ -4,21 +4,29 @@ left to right direction
 skinparam packageStyle rect
 
 actor User as user
+note "Graphs according to\nuser's seed selection" as graphNote
 
 package System{
-    (Graph precipitation) as prec
-    (Graph relative humidity) as rhum
-    (Graph sun bright) as sbright
-    (Graph maximum\nor minimum\nair temperature) as (temp)
+    (Process precipitation) as prec
+    (Process relative humidity) as rhum
+    (Process sun bright) as sbright
+    (Process maximum\nor minimum\nair temperature) as (temp)
+    (Process production) as (prod)
 
-    (Get historic data) as historic
+    (Process graph data) as historic
+    (Fetch data) as fetch
+    (Graph data) as graph
 
-    user -- historic
+    user -- graph
+    (graph) .. graphNote
+    historic <. graph: include
+    historic ..> fetch: include
 
-    historic <.. prec :extends
-    historic <.. rhum :extends
-    historic <.. sbright :extends
-    historic <.. temp :extends
+    historic ..> prec :include
+    historic ..> rhum :include
+    historic ..> sbright :include
+    historic ..> temp :include
+    historic ..> prod :include
 }
 
 @enduml

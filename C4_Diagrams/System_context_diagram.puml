@@ -9,13 +9,9 @@ Person(user, "User", "Who needs to check\nplanting crops factors")
 
 Container(mobile_app, "System to identify agricultural factors", "MiCosecha","Allow users to view data related to factors that contribute to the planting of crops")
 
-System(data, "Data", "Used by\n the system"){
-    System_Ext(fedearroz, "Federación nacional de arroceros", "Colombia")
-    System_Ext(ideam, "IDEAM", "Harvard Dataverse")
-}
+System_Ext(dataverse, "Dataverse", "CIAT Dataverse")
 
 Rel(user, mobile_app, "Uses")
-Rel(mobile_app, fedearroz, "Uses")
-Rel(mobile_app, ideam, "Uses")
+Rel_R(mobile_app, dataverse, "Uses")
 
 @enduml
